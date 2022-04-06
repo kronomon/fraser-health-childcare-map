@@ -24,3 +24,33 @@ Run via Docker on port 8000:
 docker build -t ccmap .
 docker run --name ccmap -dp 8000:8000 -v "$(pwd)"/instance:/ccmap/instance -v "$(pwd)"/logs:/ccmap/logs ccmap
 ```
+
+## Deployment
+Outside of Docker (Python3.6+):
+```
+# create virtual env
+python -m venv <venv-path>
+source <venv-path>/bin/activate
+
+# install requirements
+pip install -r requirements.txt
+python -m pip install https://github.com/flask-extensions/Flask-GoogleMaps/archive/refs/tags/0.4.1.1.tar.gz # remove after https://github.com/flask-extensions/Flask-GoogleMaps/issues/145 bugfix is released
+
+# update configs
+cp config.py instance/config.py # replace GOOGLEMAPS_KEY with your API key
+
+# initialize db
+flask db init
+flask db migrate -m 'Initial migration'
+
+# Deployment options: https://flask.palletsprojects.com/en/2.1.x/deploying/
+./run.sh # ex: uses gunicorn option
+
+# Website should now be viewable on browser with an empty map
+
+# populate db
+flask upddate-centers
+flask geocode
+
+# Website should now show markers of childcare centers
+```

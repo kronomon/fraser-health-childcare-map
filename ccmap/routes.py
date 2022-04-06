@@ -13,7 +13,6 @@ def mapview():
     ccmap = None
     search_range_km = 5
     user_coordinates = BURNABY_COORDINATES
-    app.logger.debug("MAP VIEW REQUESTED")
     if request.method == 'POST':
         user_location = request.form['location'].strip()
         if request.form['search_range_km'].isnumeric():
