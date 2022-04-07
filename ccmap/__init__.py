@@ -40,8 +40,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///{app.instance_path}/\
-        {app.config['SQLALCHEMY_DATABASE_NAME']}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{app.instance_path}/"\
+                                            f"{app.config['SQLALCHEMY_DATABASE_NAME']}"
     from . import scraper, geocode
     db.init_app(app)
     scraper.init_app(app)

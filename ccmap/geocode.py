@@ -37,7 +37,9 @@ def get_coordinates(address):
 
     try:
         json_data = json.loads(data)
-        if json_data.get('results'):
+        if json_data.get('status') != "OK":
+            app.logger.error(f'API request not OK: {json_data}')
+        elif json_data.get('results'):
             lat = json_data.get('results')[0].get('geometry',{}).get('location',{}).get('lat')
             lng = json_data.get('results')[0].get('geometry',{}).get('location',{}).get('lng')
             app.logger.debug(f'Location for {address}: {lat} lat, {lng} lng')
