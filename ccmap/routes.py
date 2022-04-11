@@ -31,7 +31,7 @@ def mapview():
             lat = user_coordinates.get('lat'),
             lng = user_coordinates.get('lng'),
             zoom = 13,
-            style = "border:0",
+            style = "height:450;width:600;border:0;",
             markers = []
             )
     centers = ChildcareCenter.query.filter(and_(
