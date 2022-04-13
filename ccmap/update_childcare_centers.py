@@ -1,10 +1,11 @@
 #!usr/bin/env python3
 
 """
-Fraser Health Web Scraper
+Update Childcare Centers - Fraser Health
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This script scrapes childcare facility data from Fraser Health
+This script scrapes childcare facility data from Fraser Health website
+and imports into database
 """
 import re
 import click

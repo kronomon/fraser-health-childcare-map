@@ -42,9 +42,10 @@ def create_app(test_config=None):
         pass
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{app.instance_path}/"\
                                             f"{app.config['SQLALCHEMY_DATABASE_NAME']}"
-    from . import scraper, geocode
+    from . import geocode, update_childcare_centers, purge_childcare_centers
     db.init_app(app)
-    scraper.init_app(app)
+    update_childcare_centers.init_app(app)
+    purge_childcare_centers.init_app(app)
     geocode.init_app(app)
     migrate.init_app(app, db)
     GoogleMaps(app)
