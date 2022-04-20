@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% set active_page = 'map' %}
 
 {% block title %} Map {% endblock %}
 
@@ -23,6 +24,8 @@
     <div class="row mb-3 mt-3">
       <div class="col">
         <h2>Fraser Health ChildCare Map</h2>
+        Looking for licensed daycares near you in the Fraser Health region? You're in the right place 🙂
+        <hr/>
       </div>
       <form method="POST">
         <div class="col-md-4 mb-3">
@@ -52,7 +55,7 @@
   </div>
 
   <div class="row mt-3 mb-3">
-    <div class="map-container" style="height: 100px">
+    <div class="col-md-12">
   {{ccmap.html}}
     </div>
   </div>

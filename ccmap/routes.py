@@ -53,7 +53,7 @@ def mapview():
             lat = user_coordinates.get('lat'),
             lng = user_coordinates.get('lng'),
             zoom = 13,
-            style = "border:0",
+            style = "height:450;width:600;border:0;",
             markers = []
             )
     query = ChildcareCenter.query.filter(and_(
@@ -89,6 +89,7 @@ def mapview():
             ccmap.markers.append(marker)
 
     return render_template('mapview.html',
+                            GOOGLE_ANALYTICS_KEY=app.config.get('GOOGLE_ANALYTICS_KEY', None),
                             ccmap=ccmap,
                             centers=centers,
                             search_range_km=search_range_km,
@@ -97,4 +98,5 @@ def mapview():
 
 @app.route("/faq", methods=['GET'])
 def faq():
-    return render_template('faq.html')
+    return render_template('faq.html',
+                            GOOGLE_ANALYTICS_KEY=app.config.get('GOOGLE_ANALYTICS_KEY', None))
