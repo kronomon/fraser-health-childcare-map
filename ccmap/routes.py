@@ -6,6 +6,7 @@ from .models import ChildcareCenter
 
 KM_GCS_CONVERSION = 111 #111km = 1 lat/lng
 BURNABY_COORDINATES = {'lat': 49.2488, 'lng': -122.9805 }
+EXPECTED_MIN_NUM_CENTRES = 20 # low number of centres found may mean location is in another health region
 
 '''
 301 - Group Child Care (Under 36 Months)
@@ -40,7 +41,7 @@ def mapview():
             search_range_km = int(request.form['search_range_km'])
         if user_location:
             if 'british columbia' not in user_location.lower():
-                user_location = user_location + " British Columbia"
+                user_location = user_location + ", British Columbia"
             user_coordinates = get_coordinates(app.config['GOOGLEMAPS_KEY'],user_location)
         if not user_coordinates:
             app.logger.error(f"ERROR: No coordinates found from Google Maps API for location: \
@@ -93,7 +94,8 @@ def mapview():
                             ccmap=ccmap,
                             centers=centers,
                             search_range_km=search_range_km,
-                            service_types=service_types)
+                            service_types=service_types,
+                            show_other_health_regions=True if len(centers) <= EXPECTED_MIN_NUM_CENTRES else False)
 
 
 @app.route("/faq", methods=['GET'])

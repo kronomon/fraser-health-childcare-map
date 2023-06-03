@@ -14,9 +14,7 @@ Data is pulled from [Fraser Health's child-care facilities website](https://www.
 
 Run the webapp locally in development mode:
 ```
-env FLASK_APP=ccmap
-env FLASK_ENVIRONMENT=development
-flask run
+flask run --debug
 ```
 
 Run via Docker on port 8000:
