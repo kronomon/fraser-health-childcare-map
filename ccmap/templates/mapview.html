@@ -54,6 +54,9 @@
     </form>
   </div>
 
+  <div class="row mt-3" {% if not show_other_health_regions %}hidden{% endif %}>
+    <p><i><b>Note:</b> This website only has Fraser Health region childcare centers. Please check <a href="/faq#no-childcare-centres">these links</a> if you are in another health region</i></p>
+  </div>
   <div class="row mt-3 mb-3">
     <div class="col-md-12">
   {{ccmap.html}}
