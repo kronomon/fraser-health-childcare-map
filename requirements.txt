@@ -1,12 +1,12 @@
 beautifulsoup4==4.10.0
-pytest==6.2.5
+pytest==7.3.1
 requests==2.31.0
 SQLAlchemy==1.4.26
 requests-mock==1.9.3
 fixtures==3.0.0
 Flask==2.3.2
 flask-sqlalchemy==3.0.3
-Flask-Migrate==3.1.0
+Flask-Migrate==4.0.4
 gunicorn==20.1.0
 pylint-flask==0.6
 pylint-flask-sqlalchemy==0.2.0
