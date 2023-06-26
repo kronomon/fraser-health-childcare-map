@@ -5,7 +5,7 @@ SQLAlchemy==1.4.26
 requests-mock==1.9.3
 fixtures==4.1.0
 Flask==2.3.2
-flask-sqlalchemy==3.0.3
+flask-sqlalchemy==3.0.5
 Flask-Migrate==4.0.4
 gunicorn==20.1.0
 pylint-flask==0.6
